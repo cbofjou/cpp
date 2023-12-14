@@ -1,153 +1,29 @@
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
-void dsb(char ch, int pch[5])
-{
-	for (int i = 0;i < 5;i++)
-	{
-		pch[i] = 0;
-	}
-	int m = 0, flag = 0;
-	if (ch == ' ')
-	{
-		m = 0;
-	}
-	else
-	{
-		m = ch - '@';
-	}
-	for (int j = 0;flag != 1;j++)
-	{
-		pch[j] = m % 2;
-		m = m / 2;
-		if (m == 0)
-		{
-			flag = 1;
-		}
-	}
-}
 int main()
 {
-	int a, b, c = 0, d = 0, m = 0;
-	char ch[90] = { 0 };
-	int arr[21][21] = { 0 };
-	int tmp[450] = { 0 };
-	int pch[5] = { 0 };
-	scanf_s("%d %d", &a, &b);
-	getchar();
-	gets_s(ch);
-	c = strlen(ch);
-	for (int i = 0;i < c;i++)
+	int c, i = 2, e = 2, l = 0;
+	int ch[1005] = { 0 };
+	scanf_s("%d %d %d", &ch[0], &ch[1], &c);
+
+	for (l = 0;e < c + 1;l++)
 	{
-		dsb(ch[i], pch);
-		for (int j = 4;j >= 0;j--)
+		ch[e] = ch[i - 1] * ch[i - 2];
+		if (ch[e] > 9)
 		{
-			tmp[d++] = pch[j];
-		}
-	}
-	for (int i = 0;i < 21;i++)
-	{
-		for (int j = 0;j < 21;j++)
-		{
-			arr[i][j] = -1;
-		}
-	}
-	int k = 0, l = -1;
-	for (int n = 0;1;n++)
-	{
-		for (int j = l + 1;j < b;j++)
-		{
-			int i = k;
-			if (arr[i][j] != -1)
-			{
-				break;
-			}
-			arr[i][j] = tmp[m];
-			m++;
-			if (m == d)
-			{
-				break;
-			}
-			k = i;
-			l = j;
+			ch[e] = (ch[i - 1] * ch[i - 2]) / 10;
+			e++;
+			ch[e] = (ch[i - 1] * ch[i - 2]) % 10;
 
 		}
-		if (m == d)
-		{
-			break;
-		}
-		for (int i = k + 1;i < a;i++)
-		{
-			int j = l;
-			if (arr[i][j] != -1)
-			{
-				break;
-			}
-			arr[i][j] = tmp[m];
-			m++;
-			if (m == d)
-			{
-				break;
-			}
-			k = i;
-			l = j;
-		}
-		if (m == d)
-		{
-			break;
-		}
-		for (int j = l - 1;j >= 0;j--)
-		{
-			int i = k;
-			if (arr[i][j] != -1)
-			{
-				break;
-			}
-			arr[i][j] = tmp[m];
-			m++;
-			if (m == d)
-			{
-				break;
-			}
-			k = i;
-			l = j;
-		}
-		if (m == d)
-		{
-			break;
-		}
-		for (int i = k - 1;i >= 0;i--)
-		{
-			int j = l;
-			if (arr[i][j] != -1)
-			{
-				break;
-			}
-			arr[i][j] = tmp[m];
-			m++;
-			if (m == d)
-			{
-				break;
-			}
-			k = i;
-			l = j;
-		}
-		if (m == d)
-		{
-			break;
-		}
+		e++;
+		i++;
 	}
-	for (int i = 0;i < a;i++)
+	printf("%d", ch[0]);
+	for (i = 1;i < c;i++)
 	{
-		for (int j = 0;j < b;j++)
-		{
-			if (arr[i][j] == -1)
-			{
-				printf("0");
-				continue;
-			}
-			printf("%d", arr[i][j]);
-		}
+		printf(" %d", ch[i]);
 	}
 	return 0;
 }

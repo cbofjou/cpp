@@ -1,3 +1,7 @@
+openjudge 1.8 25
+
+
+
 #include<stdio.h>
 #include<string.h>
 #include<math.h>

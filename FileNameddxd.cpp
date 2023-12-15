@@ -1,3 +1,5 @@
+判断大小端
+
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
@@ -10,11 +12,11 @@ int main()
 {
     if (test() == 1)
     {
-        printf("Ð¡¶Ë");
+        printf("小端");
     }
     else
     {
-        printf("´ó¶Ë");
+        printf("大端");
     }
     return 0;
 }

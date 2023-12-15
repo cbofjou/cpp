@@ -10,11 +10,11 @@ int main()
 {
     if (test() == 1)
     {
-        printf("Ğ¡¶Ë");
+        printf("ÃÂ¡Â¶Ã‹");
     }
     else
     {
-        printf("´ó¶Ë");
+        printf("Â´Ã³Â¶Ã‹");
     }
     return 0;
 }

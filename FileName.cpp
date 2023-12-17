@@ -1,3 +1,6 @@
+动态内存管理学习
+
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>

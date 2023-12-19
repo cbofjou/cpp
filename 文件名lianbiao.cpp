@@ -1,3 +1,6 @@
+链表实现集合差
+
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>

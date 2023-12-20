@@ -1,3 +1,8 @@
+自定义进制转换
+范围是2进制到16进制之间
+openjudge 1.13.1
+
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>

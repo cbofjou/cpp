@@ -1,3 +1,6 @@
+大整数除小整数，至于为什么不是大整数除大整数，因为我不会！
+
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>

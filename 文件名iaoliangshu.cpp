@@ -1,3 +1,7 @@
+牛客jou练习3，漂亮数
+
+
+
 #include <iostream>
 #include <vector>
 #define N 100000005

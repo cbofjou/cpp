@@ -1,53 +1,61 @@
-动态内存管理学习
-
-
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
-#include<stdlib.h>
+#include <iostream>
+#include <vector>
+#define N 100000005
+using namespace std;
+vector<int> ss;
+char flag[N] = { 1, 1 };
+int a[N] = { 0 };
+void sushu()
+{
+    for (int i = 2; i <= N; i++)
+    {
+        if (flag[i] == 0)
+        {
+            ss.push_back(i);
+        }
+        for (size_t j = 0; j < ss.size(); j++)
+        {
+            if (i * ss[j] >= N)
+            {
+                break;
+            }
+            flag[i * ss[j]] = 1;
+            if (i % ss[j] == 0)
+            {
+                break;
+            }
+        }
+    }
+}
 int main()
 {
-	/*int a;
-	scanf_s("%d", &a);*/
-	//int* p = (int*)malloc(sizeof(int)*a);
-	int* p = (int*)calloc(1,sizeof(int));
-	if (p == NULL)
-	{
-		printf("%s\n", strerror(errno));
-	}
-	else
-	{ 
-		for (int i = 0;i < 1;i++)
-		{
-			*(p + i) = i;
-		}
-	}
-	printf("%p\n", p);
-	int* p1 = (int*)realloc(p, 8);
-	printf("%p\n",p);
-	printf("%p\n", p1);
-	if (p1 != NULL)
-	{
-		p = p1;
-	}
-	printf("%p\n", p);
-	if (p == NULL)
-	{
-		printf("%s\n", strerror(errno));
-	}
-	else
-	{
-		for (int i = 1;i < 2;i++)
-		{
-			*(p + i) = i;
-		}
-		for (int i = 0;i < 2;i++)
-		{
-			printf("%d ", *(p + i));
-		}
-	}
-	free(p);
-	p = NULL;
-	p1 = NULL;
-	return 0;
+    int count = 0;
+    sushu();
+    for (size_t i = 0; i < ss.size(); i++)
+    {
+        for (size_t j = 0; j < ss.size(); j++)
+        {
+            if (ss[i] * ss[j] >= N)
+            {
+                break;
+            }
+            a[ss[i] * ss[j]] = 1;
+        }
+    }
+    int t = 0;
+    int l = 0, r = 0;
+    cin >> t;
+    while (t--)
+    {
+        cin >> l >> r;
+        for (int i = l; i < min(r, N); i++)
+        {
+            if (a[i] == 1)
+            {
+                count++;
+            }
+        }
+        cout << count << endl;
+    }
+    return 0;
 }
